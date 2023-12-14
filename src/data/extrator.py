@@ -13,6 +13,7 @@ def download_data(symbols, start_date, end_date):
         if df.shape[0] == 0:
             print(f"A base {symbol} não está disponivel ")
         else:
+            df['Name'] = symbol
             df.to_parquet(path_full, compression='gzip')
         
 
