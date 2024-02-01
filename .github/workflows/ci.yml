@@ -1,0 +1,30 @@
+name: aula
+
+on: [push]
+
+
+jobs:
+    teste_aula: 
+        runs-on: ubuntu-latest
+        steps:
+            
+            - name: Etapa obrigatoria "Checkout"
+              uses: actions/checkout@v4
+
+            - run: echo "Mensagem qualquer"
+
+            - name: Instalação do Python 3.9
+              uses: actions/setup-python@v2
+              with:
+                python-version: 3.9
+            
+            - name: Instala o miniconda
+              uses: conda-incubator/setup-miniconda@v3
+              with:
+                activate-environment: aula
+
+            - name: Install Python libs
+              run: |
+                python -m pip install --upgrade pip
+                pip install pandas numpy yfinance
+            
